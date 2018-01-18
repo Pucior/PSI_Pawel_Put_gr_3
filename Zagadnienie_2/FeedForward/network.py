@@ -1,0 +1,13 @@
+from pybrain3.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, FullConnection, RecurrentNetwork
+network = FeedForwardNetwork()
+inLayer = LinearLayer(35)
+hiddenLayer = SigmoidLayer(5)
+outLayer = LinearLayer(1)
+network.addInputModule(inLayer)
+network.addModule(hiddenLayer)
+network.addOutputModule(outLayer)
+inToHidden = FullConnection(inLayer, hiddenLayer)
+hiddenToOut = FullConnection(hiddenLayer, outLayer)
+network.addConnection(inToHidden)
+network.addConnection(hiddenToOut)
+network.sortModules()
